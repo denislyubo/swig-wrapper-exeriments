@@ -1,0 +1,18 @@
+cmake_minimum_required (VERSION 3.4)
+
+project(SwigExperiments)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+set(PROCESSOR_BITS 64)
+
+	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -msse -msse2 -Wall -fPIC -m${PROCESSOR_BITS} -pthread -Wunknown-pragmas -fvisibility=hidden")
+	set (CMAKE_C_FLAGS	"${CMAKE_C_FLAGS} -m${PROCESSOR_BITS} -fPIC")
+	set (CMAKE_EXE_LINKER_FLAGS	"${CMAKE_EXE_LINKER_FLAGS} -m${PROCESSOR_BITS}  -fPIC")
+	set (CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -m${PROCESSOR_BITS}  -fPIC")
+	set (CMAKE_SHARED_LINKER_FLAGS  "${CMAKE_SHARED_LINKER_FLAGS} -m${PROCESSOR_BITS}  -fPIC")
+
+add_subdirectory(First First)
+add_subdirectory(Second Second)
